@@ -38,7 +38,7 @@
 
   <div class="row mt-3  ">
     <div class="col">
-      <ul id="misMensajes">
+      <ul class="list-group" id="misMensajes">
 
       </ul>
     </div>
@@ -71,7 +71,7 @@
 
     socket.on("mensaje-servidor", (dataResponse) => {
       console.log("data de respuesta del server : ", dataResponse);
-      mensajes.innerHTML += `<li>${dataResponse.msg} ${dataResponse.fecha}</li>`
+      mensajes.innerHTML += `<li class="list-group-item list-group-item-primary d-flex align-items-center justify-content-between">${dataResponse.msg}<small> | ${dataResponse.fecha}</small></li>`
     });
 
   </script>

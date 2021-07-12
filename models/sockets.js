@@ -10,10 +10,14 @@ class Sockets {
 
       //listen events 
       socket.on("mensaje-cliente", (data) => {
-        console.log("el cliente emitio esto : ", data);
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        let ddmmyyyy = `${day}/${month < 10 ? `0${month}` : month}/${year}`
         this.io.emit("mensaje-servidor", {
           msg: data.msg,
-          fecha: new Date(),
+          fecha: ddmmyyyy,
         });
       });
     });

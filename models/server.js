@@ -31,7 +31,6 @@ class Server {
   };
 
   execute() {
-
     //inicializar el middleware
     this.middleware();
 
