@@ -19,60 +19,18 @@
 </head>
 
 <body class="container">
-  <h1 class="mt-5"> Mini chat</h1>
-
-  <hr>
-
-  <form id="miFormulario">
-    <div class="row">
-      <div class="col-8">
-        <input type="text" placeholder="escribe tu mensaje aqui" id="textMensaje" class="form-control">
-      </div>
-      <div class="col-4">
-        <button type="submit" class="btn btn-primary">
-          Enviar
-        </button>
-      </div>
-    </div>
-  </form>
-
-  <div class="row mt-3  ">
-    <div class="col">
-      <ul class="list-group" id="misMensajes">
-
-      </ul>
-    </div>
-  </div>
-
+  <h1 class="mt-5">NodeJS - Socket.io</h1>
   <!-- SCRIPT DEL HTML -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.3/socket.io.js"
     integrity="sha512-Jr0UIR/Q8MUX+93zjDOhuDUKLqJZObtwpkLJQcR9qMaLgL0thet39IORuavUaZFkZ8a4ktrUsKPM9mf5LWMduA=="
     crossorigin="anonymous"></script>
   <script>
-    // const socket = io("http://localhost:8080");
-    const socket = io("https://react-socket-server-jgc.herokuapp.com/");
+    const socket = io("http://localhost:8080");
+    //const socket = io("https://react-socket-server-jgc.herokuapp.com/");
 
-    //refrencias a los elemntos del dom
-    const form = document.querySelector("#miFormulario");
-    const mensajes = document.querySelector("#misMensajes");
-    const txtMensaje = document.querySelector("#textMensaje");
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const newMensaje = txtMensaje.value;
-      console.log(newMensaje);
-
-      socket.emit("mensaje-cliente", {
-        msg: newMensaje,
-      });
-
-      txtMensaje.value = "";
-    });
-
-    socket.on("mensaje-servidor", (dataResponse) => {
-      console.log("data de respuesta del server : ", dataResponse);
-      mensajes.innerHTML += `<li class="list-group-item list-group-item-primary d-flex align-items-center justify-content-between">${dataResponse.msg}<small> | ${dataResponse.fecha}</small></li>`
-    });
+    socket.on("current-products", (data) => {
+      console.log("productos : ", data);
+    })
 
   </script>
 </body>
