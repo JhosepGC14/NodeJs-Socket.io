@@ -32,6 +32,12 @@ class Sockets {
         this.productList.removeProduct(id);
         this.io.emit("current-products", this.productList.getAllProducts());
       });
+
+      //agregar producto
+      socket.on("add-product", (name) => {
+        this.productList.addProduct(name);
+        this.io.emit("current-products", this.productList.getAllProducts());
+      });
     });
   }
 }
